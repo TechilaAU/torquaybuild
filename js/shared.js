@@ -1,16 +1,36 @@
-// ── MOBILE NAV ──
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── MOBILE NAV ──
   const toggle = document.querySelector('.nav-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
   const closeBtn = document.querySelector('.mobile-nav-close');
 
-  if (toggle && mobileNav) {
-    toggle.addEventListener('click', () => mobileNav.classList.add('open'));
-    closeBtn?.addEventListener('click', () => mobileNav.classList.remove('open'));
-    mobileNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => mobileNav.classList.remove('open'));
-    });
+  // Create backdrop dynamically
+  const backdrop = document.createElement('div');
+  backdrop.className = 'mobile-nav-backdrop';
+  document.body.appendChild(backdrop);
+
+  function openNav() {
+    mobileNav?.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    toggle?.classList.add('open');
   }
+  function closeNav() {
+    mobileNav?.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+    toggle?.classList.remove('open');
+  }
+
+  toggle?.addEventListener('click', openNav);
+  closeBtn?.addEventListener('click', closeNav);
+  backdrop.addEventListener('click', closeNav);
+  mobileNav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeNav();
+  });
 
   // ── ANIMATE ON SCROLL ──
   const observer = new IntersectionObserver((entries) => {
@@ -20,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 
   // ── ACTIVE NAV ──
@@ -45,4 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
 });
