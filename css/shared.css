@@ -165,7 +165,16 @@ header {
   gap: 24px;
 }
 .logo-wrap { display: flex; align-items: center; }
-.logo-wrap img { height: 64px; width: auto; }
+.logo-wrap img {
+  height: 72px;
+  width: auto;
+  mix-blend-mode: lighten;
+  filter: brightness(1.05);
+}
+.footer-logo img {
+  mix-blend-mode: lighten;
+  filter: brightness(1.05);
+}
 
 nav { display: flex; align-items: center; gap: 4px; }
 nav a {
