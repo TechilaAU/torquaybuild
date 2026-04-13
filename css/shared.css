@@ -755,6 +755,9 @@ footer {
 .anim-delay-3 { transition-delay: 0.3s; }
 .anim-delay-4 { transition-delay: 0.4s; }
 
+/* ── MOBILE NAV (hidden by default at all sizes) ── */
+.mobile-nav { display: none; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
