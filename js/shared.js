@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileNav = document.querySelector('.mobile-nav');
   const closeBtn = document.querySelector('.mobile-nav-close');
 
-  // Create backdrop dynamically
   const backdrop = document.createElement('div');
   backdrop.className = 'mobile-nav-backdrop';
   document.body.appendChild(backdrop);
@@ -27,10 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   closeBtn?.addEventListener('click', closeNav);
   backdrop.addEventListener('click', closeNav);
   mobileNav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeNav();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
   // ── ANIMATE ON SCROLL ──
   const observer = new IntersectionObserver((entries) => {
@@ -43,11 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.08 });
   document.querySelectorAll('.anim').forEach(el => observer.observe(el));
 
-  // ── ACTIVE NAV ──
-  const path = window.location.pathname.split('/').pop() || 'index.html';
+  // ── ACTIVE NAV — works with clean Netlify URLs ──
+  const pathname = window.location.pathname; // e.g. "/about/" or "/"
   document.querySelectorAll('nav a, .mobile-nav a').forEach(a => {
     const href = a.getAttribute('href');
-    if (href === path || (path === '' && href === 'index.html')) {
+    if (!href) return;
+    // Exact match OR pathname starts with href (for nested dropdown links)
+    if (href === pathname || (href !== '/' && pathname.startsWith(href))) {
+      a.classList.add('active');
+    }
+    // Home
+    if (href === '/' && pathname === '/') {
       a.classList.add('active');
     }
   });

@@ -1,0 +1,62 @@
+[build]
+  publish = "."
+
+# ── CUSTOM 404 ──
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# ── OLD .HTML URL REDIRECTS (301 permanent) ──
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/products.html"
+  to = "/products/"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/concrete-masonry.html"
+  to = "/concrete-masonry/"
+  status = 301
+
+[[redirects]]
+  from = "/steel-reinforcing.html"
+  to = "/steel-reinforcing/"
+  status = 301
+
+[[redirects]]
+  from = "/drainage-landscaping.html"
+  to = "/drainage-landscaping/"
+  status = 301
+
+[[redirects]]
+  from = "/tools-equipment.html"
+  to = "/tools-equipment/"
+  status = 301
+
+[[redirects]]
+  from = "/finishes-sealers.html"
+  to = "/finishes-sealers/"
+  status = 301
+
+[[redirects]]
+  from = "/garden-outdoor.html"
+  to = "/garden-outdoor/"
+  status = 301
+
+[build.environment]
+  NODE_VERSION = "18"
