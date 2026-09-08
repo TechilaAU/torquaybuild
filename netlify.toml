@@ -1,12 +1,6 @@
 [build]
   publish = "."
 
-# ── CUSTOM 404 ──
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-
 # ── OLD .HTML URL REDIRECTS (301 permanent) ──
 [[redirects]]
   from = "/index.html"
