@@ -52,6 +52,5 @@
   to = "/garden-outdoor/"
   status = 301
 
-# NOTE: No catch-all /* redirect — it blocks Netlify form POST processing
 [build.environment]
   NODE_VERSION = "18"
