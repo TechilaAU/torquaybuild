@@ -1,12 +1,6 @@
 [build]
   publish = "."
 
-# ── CUSTOM 404 ──
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-
 # ── OLD .HTML URL REDIRECTS (301 permanent) ──
 [[redirects]]
   from = "/index.html"
@@ -58,5 +52,6 @@
   to = "/garden-outdoor/"
   status = 301
 
+# NOTE: No catch-all /* redirect — it blocks Netlify form POST processing
 [build.environment]
   NODE_VERSION = "18"
